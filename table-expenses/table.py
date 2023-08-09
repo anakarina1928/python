@@ -1,16 +1,19 @@
-# activavion de nuestro entorno virtual: env\Scripts\activate.bat
-
+# activavion de nuestro entorno virtual: env\Scripts\activate.bat // para desactivar: env\Scripts\desactivate.bat
+# Un entorno virtual es un espacio aislado donde se gestionan las bibliotecas y dependencias de un proyecto.
 import tkinter as tk
-"""biblioteca de interfaz gráfica de usuario (GUI) que
- forma parte de la librería estándar de Python. Permite 
- crear ventanas, botones, campos de entrada, menús y otros
-componentes visuales en aplicaciones de escritorio de manera sencilla"""
+"""biblioteca de interfaz gráfica de usuario (GUI) queforma parte de la librería estándar de Python. Permite
+ crear ventanas, botones, campos de entrada, menús y otroscomponentes visuales en aplicaciones de escritorio de manera sencilla"""
 
 
 def main():  # definicion de una funcion
-    root = tk.Tk()
-
-    root.mainloop()# indocamos el final de la ejecucion de la aplicacion (de nuestro bucle)
+    root = tk.Tk()  # mi ventana, la raiz
+    root.title('Tabla de gastos')
+    root.iconbitmap('img/gastos.ico')
+  # root.resizable(0,0)
+    frame=tk.Frame(root) # creamos un contenedor 
+    frame.pack()
+    frame.config(width= 480, height=320, bg='blue') # configuramos el tamaño del contenedor que hemos creado en la variable frame
+    root.mainloop()  # indocamos el final de la ejecucion de la aplicacion (de nuestro bucle)
 
 
 if __name__ == '__main__':
