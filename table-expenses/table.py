@@ -1,7 +1,7 @@
 # activavion de nuestro entorno virtual: env\Scripts\activate.bat // para desactivar: env\Scripts\desactivate.bat
 # Un entorno virtual es un espacio aislado donde se gestionan las bibliotecas y dependencias de un proyecto.
 import tkinter as tk
-"""biblioteca de interfaz gráfica de usuario (GUI) queforma parte de la librería estándar de Python. Permite
+"""biblioteca de interfaz gráfica de usuario (GUI) que forma parte de la librería estándar de Python. Permite
  crear ventanas, botones, campos de entrada, menús y otroscomponentes visuales en aplicaciones de escritorio de manera sencilla"""
 from client.gui_app import Frame, menu_bar
 

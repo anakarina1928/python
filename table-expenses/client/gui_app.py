@@ -21,7 +21,39 @@ class Frame(tk.Frame):# utilizo la clase Frame de la libreria tk y creo una subc
             self.root=root
             #label de cada campo por llenar
             self.label_payment_method = tk.Label(self, text='Metodo de pago: ')
-            self.label_payment_method.grid(row= 0, column=0)#indicamos en la fila y la columna que indiquemos utilizando grid
+            self.label_payment_method.config(font=('Arial',12,'bold')) #configuramos el label colocando el tipo de letra, el tamaño, etc...
+            self.label_payment_method.grid(row= 0, column=0, padx=10, pady=10)#indicamos en la fila y la columna que indiquemos utilizando grid
+
+            self.label_quantity = tk.Label(self, text='Monto: ')
+            self.label_quantity.config(font=('Arial',12,'bold')) 
+            self.label_quantity.grid(row= 1, column=0, padx=10, pady=10)
+
+            self.label_date = tk.Label(self, text='fecha: ')
+            self.label_date.config(font=('Arial',12,'bold')) 
+            self.label_date.grid(row= 2, column=0, padx=10, pady=10)
+
+            self.label_description = tk.Label(self, text='Descripción: ')
+            self.label_description.config(font=('Arial',12,'bold'))
+            self.label_description.grid(row= 3, column=0, padx=10, pady=10)
+
+            #entrys de cada campo. Los campos de entradas
+            self.entry_payment_method = tk.Entry(self)
+            self.entry_payment_method.config(width=50,state='disabled', font=('Arial',12))
+            self.entry_payment_method.grid(row=0,column=1, padx=10, pady=10)
+
+            self.entry_quantity = tk.Entry(self)
+            self.entry_quantity.config(width=50,state='disabled', font=('Arial',12))
+            self.entry_quantity.grid(row=1,column=1, padx=10, pady=10)
+
+            self.entry_date = tk.Entry(self)
+            self.entry_date.config(width=50,state='disabled', font=('Arial',12))
+            self.entry_date.grid(row=2,column=1, padx=10, pady=10)
+
+            self.entry_description = tk.Entry(self)
+            self.entry_description.config(width=50,state='disabled', font=('Arial',12))
+            self.entry_description.grid(row=3,column=1, padx=10, pady=10)
+
+            
     
     def __init__(self, root = None):
         super().__init__(root,width= 480, height=320 )
