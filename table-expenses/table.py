@@ -1,4 +1,4 @@
-# activavion de nuestro entorno virtual: env\Scripts\activate.bat // para desactivar: env\Scripts\desactivate.bat
+# activavion de nuestro entorno virtual: env\Scripts\activate.bat // para desactivar: env\Scripts\desactivate.bat (recuerda que debe ser desde la carpeta python)
 # Un entorno virtual es un espacio aislado donde se gestionan las bibliotecas y dependencias de un proyecto.
 import tkinter as tk
 """biblioteca de interfaz gráfica de usuario (GUI) que forma parte de la librería estándar de Python. Permite
