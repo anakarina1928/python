@@ -1,6 +1,6 @@
 #interfaz de usurio de la aplicacion
 import tkinter as tk
-
+from tkinter import ttk
 
 #funcion para crear barra de menu
 def menu_bar(root):
@@ -17,6 +17,16 @@ def menu_bar(root):
     #y que ejecutará una función específica cuando se haga clic en ella.
     
 class Frame(tk.Frame):# utilizo la clase Frame de la libreria tk y creo una subclase
+    def delete_data(self):
+        self.entry_date.delete(0, tk.END)
+        self.entry_date.insert(0, '')
+        self.entry_description.delete(0, tk.END)
+        self.entry_description.insert(0, '')
+        self.entry_payment_method.delete(0, tk.END)
+        self.entry_payment_method.insert(0, '')
+        self.entry_quantity.delete(0, tk.END)
+        self.entry_quantity.insert(0, '')
+
     def expense_data(self, root = None):
             self.root=root
             #label de cada campo por llenar
@@ -59,7 +69,7 @@ class Frame(tk.Frame):# utilizo la clase Frame de la libreria tk y creo una subc
             self.button_new.config(width=20, font=('Arial',12,'bold'), fg='#DAD5D6', bg= '#158645',cursor='hand2', activebackground='#35BD6F')
             self.button_new.grid(row= 4, column=0, padx=10, pady=10 )
 
-            self.button_save = tk.Button(self, text='Guardar')
+            self.button_save = tk.Button(self, text='Guardar', command=self.save_data)
             self.button_save.config(width=20, font=('Arial',12,'bold'), fg='#DAD5D6', bg= '#3586DF',cursor='hand2', activebackground='#3586DF')
             self.button_save.grid(row= 4, column=1, padx=10, pady=10 )
 
@@ -68,9 +78,10 @@ class Frame(tk.Frame):# utilizo la clase Frame de la libreria tk y creo una subc
             self.button_cancel.grid(row= 4, column=2, padx=10, pady=10 )
 
             # habilitando los campos 
-
+    
+    
+    
     def enable_fields(self):
-        
     
         self.entry_payment_method.config(state='normal') 
         self.entry_quantity.config(state='normal') 
@@ -82,14 +93,7 @@ class Frame(tk.Frame):# utilizo la clase Frame de la libreria tk y creo una subc
 
             
     def disable_fields(self):
-        self.entry_date.delete(0, tk.END)
-        self.entry_date.insert(0, '')
-        self.entry_description.delete(0, tk.END)
-        self.entry_description.insert(0, '')
-        self.entry_payment_method.delete(0, tk.END)
-        self.entry_payment_method.insert(0, '')
-        self.entry_quantity.delete(0, tk.END)
-        self.entry_quantity.insert(0, '')
+        self.delete_data()
         self.entry_payment_method.config(state='disabled') 
         self.entry_quantity.config(state='disabled') 
         self.entry_date.config(state='disabled') 
@@ -98,7 +102,31 @@ class Frame(tk.Frame):# utilizo la clase Frame de la libreria tk y creo una subc
         self.button_save.config(state='disabled') 
         self.button_cancel.config(state='disabled') 
 
-            
+    def save_data(self):
+        self.delete_data()
+
+    def expense_table(self):
+         self.table = ttk.Treeview(self, column=('Monto', 'metodo de pago', 'descripción', 'fecha'))
+
+         self.table.grid(row= 5, column= 0, columnspan=4)
+
+         self.table.heading('#0', text='ID')
+         self.table.heading('#1', text='MONTO')
+         self.table.heading('#2', text='METODO DE PAGO')
+         self.table.heading('#3', text='DESCRIPCION')
+         self.table.heading('#4', text='FECHA')
+         self.table.insert('',0, tex='1', values=('123','visa','mercado','28-0-2023'))
+         
+         self.button_edit = tk.Button(self, text='Editar')
+         self.button_edit.config(width=20, font=('Arial',12,'bold'), fg='#DAD5D6', bg= '#158645',cursor='hand2', activebackground='#35BD6F')
+         self.button_edit.grid(row= 6, column=0, padx=10, pady=10 )
+         
+         self.button_delete = tk.Button(self, text='Eliminar')
+         self.button_delete.config(width=20, font=('Arial',12,'bold'), fg='#DAD5D6', bg= '#E15370',cursor='hand2', activebackground='#E15370')
+         self.button_delete.grid(row= 6, column=1, padx=10, pady=10 )
+
+
+              
     
     def __init__(self, root = None):
         super().__init__(root,width= 480, height=320 )
@@ -107,7 +135,7 @@ class Frame(tk.Frame):# utilizo la clase Frame de la libreria tk y creo una subc
         #self.config(bg='blue') # configuramos el tamaño del contenedor que hemos creado en la variable frame
         self.expense_data()
         self.disable_fields()
-
+        self.expense_table()
 
         #self.disable_fields() 
 
